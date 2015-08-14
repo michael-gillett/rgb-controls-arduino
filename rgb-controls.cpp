@@ -78,7 +78,7 @@ namespace RGBControls {
     }
     Color a = colors[n];
     Color b = colors[(n + 1 == length) ? 0 : n + 1];
-    if ((n % 2 == 0 && !up) || (up && n % 2 != 0))
+    if ((n % 2 == 0) ^ up)
       fadeBetween(a, b);
     else
       fadeBetween(b, a);
