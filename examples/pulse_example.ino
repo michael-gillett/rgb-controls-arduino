@@ -8,5 +8,5 @@ Color red(255, 0, 0);
 void setup() { }
 
 void loop() {
-  led.pulse(color, 0, 100 , 5000);
+  led.pulse(red, 0, 100 , 5000);
 }
