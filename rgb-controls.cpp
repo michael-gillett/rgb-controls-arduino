@@ -52,6 +52,12 @@ namespace RGBControls {
     delay(offTime);
   }
 
+  void Led::flashN(Color* colors, int length) {
+    for (int n = 0; n < length; n++) {
+      flash(colors[n], 500, 0);
+    }
+  }
+
   void Led::pulse(Color c, int min, int max, int cycleTime) {
     Color nextColor = c.withBrightness(min + _step);
     setColor(nextColor);
@@ -67,7 +73,7 @@ namespace RGBControls {
   }
 
   void Led::step(int min, int max) {
-   if (_step >= max || _step <= min) {
+   if (_step >= max || _step < min) {
       _dir *= -1;
     }
     _step += _dir;
