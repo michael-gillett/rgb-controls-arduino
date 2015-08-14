@@ -40,6 +40,18 @@ namespace RGBControls {
     analogWrite(_bPin, c.blue);
   }
 
+  void Led::off() {
+    Color black(0, 0, 0);
+    setColor(black);
+  }
+
+  void Led::flash(Color c, int onTime, int offTime) {
+    setColor(c);
+    delay(onTime);
+    off();
+    delay(offTime);
+  }
+
   void Led::pulse(Color c, int min, int max, int cycleTime) {
     Color nextColor = c.withBrightness(min + _step);
     setColor(nextColor);
