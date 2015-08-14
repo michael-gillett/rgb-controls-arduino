@@ -71,9 +71,7 @@ namespace RGBControls {
       n++;
       if (n >= length) {
         n = 0;
-        up = !up;
-        if (length % 2 == 0)
-          up = false;
+        up = !up && (length % 2 != 0)
       }
     }
     Color a = colors[n];
