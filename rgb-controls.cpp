@@ -28,7 +28,6 @@ namespace RGBControls {
     _gPin = gPin;
     _bPin = bPin;
     _step = 1;
-    _dir = 1;
     pinMode(_rPin, OUTPUT);
     pinMode(_gPin, OUTPUT);
     pinMode(_bPin, OUTPUT);
@@ -65,17 +64,37 @@ namespace RGBControls {
     step(min, max);
   }
 
+  int n = 0;
+  bool up = false;
+  void Led::fadeN(Color* colors, int length) {
+    if (_step == 0 || _step == 100) {
+      n++;
+      if (n >= length) {
+        n = 0;
+        up = !up;
+        if (length % 2 == 0)
+          up = false;
+      }
+    }
+    Color a = colors[n];
+    Color b = colors[(n + 1 == length) ? 0 : n + 1];
+    if ((n % 2 == 0 && !up) || (up && n % 2 != 0))
+      fadeBetween(a, b);
+    else
+      fadeBetween(b, a);
+  }
+
   void Led::fadeBetween(Color c1, Color c2) {
     Color nextColor = c1.lerp(c2, _step / 100.0);
     setColor(nextColor);
-    delay(50);
+    delay(25);
     step(0, 100);
   }
 
+
+  bool isIncreasing = true;
   void Led::step(int min, int max) {
-   if (_step >= max || _step < min) {
-      _dir *= -1;
-    }
-    _step += _dir;
+    _step = _step + (isIncreasing ? 1 : -1);
+    if (_step >= max || _step <= min) isIncreasing = !isIncreasing;
   }
 }
