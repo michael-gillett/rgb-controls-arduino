@@ -57,17 +57,18 @@ namespace RGBControls {
     }
   }
 
-  void Led::pulse(Color c, int min, int max, int cycleTime) {
-    Color nextColor = c.withBrightness(min + _step);
+  void Led::pulse(Color c, int min, int max, int duration) {
+    Color nextColor = c.withBrightness(_step);
     setColor(nextColor);
-    delay(cycleTime / (max - min));
+    delay(duration / (max - min));
     step(min, max);
   }
 
   int n = 0;
   bool up = false;
-  void Led::fadeN(Color* colors, int length) {
-    if (_step == 0 || _step == 100) {
+  void Led::fade(Color* colors, int length, int duration) {
+    float steps = duration / 25;
+    if (_step == 0 || _step == steps) {
       n++;
       if (n >= length) {
         n = 0;
@@ -77,16 +78,17 @@ namespace RGBControls {
     Color a = colors[n];
     Color b = colors[(n + 1 == length) ? 0 : n + 1];
     if ((n % 2 == 0) ^ up)
-      fadeBetween(a, b);
+      fade(a, b, duration);
     else
-      fadeBetween(b, a);
+      fade(b, a, duration);
   }
 
-  void Led::fadeBetween(Color c1, Color c2) {
-    Color nextColor = c1.lerp(c2, _step / 100.0);
+  void Led::fade(Color c1, Color c2, int duration) {
+    float steps = duration / 25;
+    Color nextColor = c1.lerp(c2, _step / steps);
     setColor(nextColor);
     delay(25);
-    step(0, 100);
+    step(0, steps);
   }
 
   void Led::fadeOnce(Color c1, Color c2, int duration) {
