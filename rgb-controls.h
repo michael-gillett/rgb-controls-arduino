@@ -13,12 +13,11 @@ namespace RGBControls {
         int red;
         int green;
         int blue;
-
     };
 
     class Led {
       public:
-        Led(int rPin, int gPin, int bPin);
+        Led(int rPin, int gPin, int bPin, bool isCathode = true);
         void setColor(Color c);
         void pulse(Color c, int min, int max, int duration);
         void fade(Color c1, Color c2, int duration);
@@ -32,6 +31,7 @@ namespace RGBControls {
         int _rPin;
         int _gPin;
         int _bPin;
+        bool _isCathode;
 
         int _step;
         int _dir;

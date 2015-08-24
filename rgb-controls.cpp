@@ -23,20 +23,27 @@ namespace RGBControls {
     return Color(red + dR, green + dG, blue + dB);
   }
 
-  Led::Led(int rPin, int gPin, int bPin) {
+  Led::Led(int rPin, int gPin, int bPin, bool isCathode) {
     _rPin = rPin;
     _gPin = gPin;
     _bPin = bPin;
     _step = 1;
+    _isCathode = isCathode;
     pinMode(_rPin, OUTPUT);
     pinMode(_gPin, OUTPUT);
     pinMode(_bPin, OUTPUT);
   }
 
   void Led::setColor(Color c) {
-    analogWrite(_rPin, c.red);
-    analogWrite(_gPin, c.green);
-    analogWrite(_bPin, c.blue);
+    if (_isCathode) {
+      analogWrite(_rPin, c.red);
+      analogWrite(_gPin, c.green);
+      analogWrite(_bPin, c.blue);
+    } else {
+      analogWrite(_rPin, 255 - c.red);
+      analogWrite(_gPin, 255 - c.green);
+      analogWrite(_bPin, 255 - c.blue);
+    }
   }
 
   void Led::off() {
