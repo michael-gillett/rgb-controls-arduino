@@ -90,9 +90,9 @@ namespace RGBControls {
   }
 
   void Led::fadeOnce(Color c1, Color c2, int duration) {
-    int steps = duration / 25;
-    for (int i = 0; i < steps; i++) {
-      Color nextColor = c1.lerp(c2, i / float(steps));
+    float steps = duration / 25;
+    for (int i = 1; i <= steps; i++) {
+      Color nextColor = c1.lerp(c2, i / steps);
       setColor(nextColor);
       delay(25);
     }
