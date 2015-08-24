@@ -71,7 +71,7 @@ namespace RGBControls {
       n++;
       if (n >= length) {
         n = 0;
-        up = !up && (length % 2 != 0)
+        up = !up && (length % 2 != 0);
       }
     }
     Color a = colors[n];
@@ -89,6 +89,14 @@ namespace RGBControls {
     step(0, 100);
   }
 
+  void Led::fadeOnce(Color c1, Color c2, int duration) {
+    int steps = duration / 25;
+    for (int i = 0; i < steps; i++) {
+      Color nextColor = c1.lerp(c2, i / float(steps));
+      setColor(nextColor);
+      delay(25);
+    }
+  }
 
   bool isIncreasing = true;
   void Led::step(int min, int max) {
