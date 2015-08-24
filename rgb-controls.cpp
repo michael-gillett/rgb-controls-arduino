@@ -51,9 +51,9 @@ namespace RGBControls {
     delay(offTime);
   }
 
-  void Led::flashN(Color* colors, int length) {
+  void Led::flash(Color* colors, int length, int onTime, int offTime) {
     for (int n = 0; n < length; n++) {
-      flash(colors[n], 500, 0);
+      flash(colors[n], onTime, offTime);
     }
   }
 

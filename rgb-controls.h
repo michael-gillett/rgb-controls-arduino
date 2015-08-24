@@ -24,8 +24,8 @@ namespace RGBControls {
         void fadeBetween(Color c1, Color c2);
         void fadeN(Color* colors, int length);
         void fadeOnce(Color c1, Color c2, int duration);
-        void flash(Color c, int onTime, int offTime);
-        void flashN(Color* colors, int length);
+        void flash(Color c, int onTime = 200, int offTime = 200);
+        void flash(Color* colors, int length, int onTime = 200, int offTime = 200);
         void off();
         void step(int min, int max);
       private:
