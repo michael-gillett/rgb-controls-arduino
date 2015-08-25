@@ -9,5 +9,6 @@ Color blue(0, 0, 255);
 void setup() { }
 
 void loop() {
-  led.fadeBetween(red, blue);
+  // Fade the light between red and blue every second
+  led.fade(red, blue, 1000);
 }

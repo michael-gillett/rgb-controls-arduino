@@ -9,23 +9,23 @@ Arduino library for controlling RGB LEDs
 
 2. Connect your RGB led to pins 9, 10, and 11 (Assuming Arduino Uno board)
 3. Copy the code below into a new sketch and upload it to your board
-```c++
-#include <rgb-controls.h>
-using namespace RGBControls;
+  ```c++
+  #include <rgb-controls.h>
+  using namespace RGBControls;
 
-// RGB led on PWN pins
-Led led(9, 10, 11); // red_pin = 9, green_pin = 10, blue_pin = 11
+  // RGB led on PWN pins
+  Led led(9, 10, 11); // red_pin = 9, green_pin = 10, blue_pin = 11
 
-Color red(255, 0, 0);
-Color blue(0, 0, 255);
+  Color red(255, 0, 0);
+  Color blue(0, 0, 255);
 
-void setup() { }
+  void setup() { }
 
-void loop() {
-  // Flash the led light red
-  led.fade(red, blue);
-}
-```
+  void loop() {
+    // Flash the led light red
+    led.fade(red, blue);
+  }
+  ```
 
 4. Your RGB led will now fade from red to blue!
 

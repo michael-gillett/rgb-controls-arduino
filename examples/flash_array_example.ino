@@ -10,11 +10,12 @@ Color yellow(255, 255, 0);
 Color magenta(255, 0, 255);
 Color cyan(0, 255, 255);
 
-Color colors [6] = {red, green, blue, yellow, magenta, cyan};
+Color colors[6] = {red, green, blue, yellow, magenta, cyan};
 
 
 void setup() { }
 
 void loop() {
-  led.flashN(colors, 6);
+  // Flash all lights in the array for 1 second with 0 ms off time
+  led.flash(colors, 6, 500, 0);
 }

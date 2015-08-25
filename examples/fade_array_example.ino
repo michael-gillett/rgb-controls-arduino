@@ -12,5 +12,6 @@ Color colors[3] = { red, green, blue };
 void setup() { }
 
 void loop() {
-  led.fadeN(colors, 3);
+  // Fade between each color in the array every 3 seconds
+  led.fade(colors, 3, 3000);
 }
