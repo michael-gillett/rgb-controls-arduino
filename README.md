@@ -22,8 +22,8 @@ Arduino library for controlling RGB LEDs
   void setup() { }
 
   void loop() {
-    // Flash the led light red
-    led.fade(red, blue);
+    // Fade the led light between red and blue every 5 seconds
+    led.fade(red, blue, 5000);
   }
   ```
 
