@@ -59,8 +59,7 @@ led.setColor(Color(255, 0, 255))
 
 #### pulse(Color color, int min, int max, int duration)
 
-Pulses the brightness of `color` between `min` and `max` every `duration` ms
-** Must be called in a `void loop()`. **
+Pulses the brightness of `color` between `min` and `max` every `duration` ms. **Must be called in a `void loop()`.**
 
 Parameter | Description | Example
 --- | --- | ---
@@ -79,8 +78,7 @@ void loop() {
 
 #### fade(Color c1, Color c2, int duration)
 
-Fade from `c1` to `c2` in `duration` milliseconds.
-** Must be called in a `void loop()`. **
+Fade from `c1` to `c2` in `duration` milliseconds. **Must be called in a `void loop()`.**
 
 Parameter | Description | Example
 --- | --- | ---
@@ -101,8 +99,7 @@ void loop() {
 
 #### fade(Color* colors, int length, int duration)
 
-Fade between each color in  in `duration` milliseconds.
-** Must be called in a `void loop()`. **
+Fade between each color in  in `duration` milliseconds. **Must be called in a `void loop()`.**
 
 Parameter | Description | Example
 --- | --- | ---
@@ -161,7 +158,7 @@ led.flash(Color(0, 255, 0), 1000, 100);
 
 #### flash(Color* colors, int length [, int onTime, int offTime])
 
-Flash an array of colors `colors` on for `onTime` ms and off for `offTime` ms
+Flash an array of `colors` on for `onTime` ms and off for `offTime` ms
 
 Parameter | Description | Example
 --- | --- | ---
@@ -235,7 +232,7 @@ Parameter | Description | Example
 to | The Color to lerp to | `Color(0, 0, 255)`
 t | The fraction clamped to range `[0...1]` | `0.5`
 
-```
+```c++
 Color red(200, 0, 0);
 Color blue(0, 0, 200);
 
