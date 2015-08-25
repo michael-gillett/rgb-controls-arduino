@@ -64,13 +64,6 @@ namespace RGBControls {
     }
   }
 
-  void Led::pulse(Color c, int min, int max, int duration) {
-    Color nextColor = c.withBrightness(_step);
-    setColor(nextColor);
-    delay(duration / (max - min));
-    step(min, max);
-  }
-
   int n = 0;
   bool up = false;
   void Led::fade(Color* colors, int length, int duration) {

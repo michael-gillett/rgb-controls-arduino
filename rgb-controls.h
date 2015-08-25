@@ -19,7 +19,6 @@ namespace RGBControls {
       public:
         Led(int rPin, int gPin, int bPin, bool isCathode = true);
         void setColor(Color c);
-        void pulse(Color c, int min, int max, int duration);
         void fade(Color c1, Color c2, int duration);
         void fade(Color* colors, int length, int duration);
         void fadeOnce(Color c1, Color c2, int duration);
